@@ -1,14 +1,6 @@
-drop database test;
-use mysql;
-delete from columns_priv;
-delete from db;
-delete from host;
-delete from tables_priv;
-delete from host;
-delete from user;
-create database bluetree;
-grant all privileges on *.* to bluetree@localhost identified by 'bluetree2006' with grant option;
-grant all privileges on *.* to bluetree@'%' identified by 'bluetree2006' with grant option;
+
+--create database bluetree;
+--grant all privileges on *.* to bluetree@localhost identified by 'bluetree2006' with grant option;
 
 drop table if exists users;
 
@@ -71,7 +63,7 @@ drop table if exists markets;
 
 create table markets (
   market_id int auto_increment primary key, 
-  market_name varchar(50) unique not null,
+  market_name varchar(255) unique not null,
   market_riskless double not null
 );
 
@@ -102,8 +94,8 @@ drop table if exists stocks;
 
 create table stocks (
   stock_id int auto_increment primary key, 
-  stock_symbol varchar(20) unique not null,
-  stock_name varchar(50) not null
+  stock_symbol varchar(50) unique not null,
+  stock_name varchar(255) not null
 );
 
 drop table if exists portfolios;
