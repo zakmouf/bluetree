@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd"><!--  - Application context definition for "springapp" DispatcherServlet.  -->
+
+<beans>
+
+	<bean name="/admin/market/list.htm" class="com.bluetree.web.admin.market.MarketListController">
+		<property name="marketManager">
+			<ref bean="marketManager" />
+		</property>
+		<property name="viewName">
+			<value>admin/market/list</value>
+		</property>
+	</bean>
+
+	<bean name="/admin/market/new.htm" class="com.bluetree.web.admin.market.MarketNewController">
+		<property name="marketManager">
+			<ref bean="marketManager" />
+		</property>
+		<property name="stockManager">
+			<ref bean="stockManager" />
+		</property>
+		<property name="sessionForm">
+			<value>true</value>
+		</property>
+		<property name="commandName">
+			<value>marketForm</value>
+		</property>
+		<property name="commandClass">
+			<value>com.bluetree.web.admin.market.MarketForm</value>
+		</property>
+		<property name="validator">
+			<bean class="com.bluetree.web.admin.market.MarketFormValidator" />
+		</property>
+		<property name="formView">
+			<value>admin/market/new</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/admin/market/view.htm?market=</value>
+		</property>
+	</bean>
+
+	<bean name="/admin/market/edit.htm" class="com.bluetree.web.admin.market.MarketEditController">
+		<property name="marketManager">
+			<ref bean="marketManager" />
+		</property>
+		<property name="stockManager">
+			<ref bean="stockManager" />
+		</property>
+		<property name="sessionForm">
+			<value>true</value>
+		</property>
+		<property name="commandName">
+			<value>marketForm</value>
+		</property>
+		<property name="commandClass">
+			<value>com.bluetree.web.admin.market.MarketForm</value>
+		</property>
+		<property name="validator">
+			<bean class="com.bluetree.web.admin.market.MarketFormValidator" />
+		</property>
+		<property name="formView">
+			<value>admin/market/edit</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/admin/market/view.htm?market=</value>
+		</property>
+	</bean>
+
+	<bean name="/admin/market/delete.htm" class="com.bluetree.web.admin.market.MarketDeleteController">
+		<property name="marketManager">
+			<ref bean="marketManager" />
+		</property>
+		<property name="viewName">
+			<value>forward:/admin/market/list.htm</value>
+		</property>
+	</bean>
+
+	<bean name="/admin/market/view.htm" class="com.bluetree.web.admin.market.MarketViewController">
+		<property name="marketManager">
+			<ref bean="marketManager" />
+		</property>
+		<property name="viewName">
+			<value>admin/market/view</value>
+		</property>
+	</bean>
+	
+	<bean name="/admin/market/profile.htm" class="com.bluetree.web.admin.market.MarketProfileController">
+		<property name="marketManager">
+			<ref bean="marketManager" />
+		</property>
+		<property name="profileManager">
+			<ref bean="profileManager" />
+		</property>
+		<property name="sessionForm">
+			<value>true</value>
+		</property>
+		<property name="commandName">
+			<value>marketProfileForm</value>
+		</property>
+		<property name="commandClass">
+			<value>com.bluetree.web.admin.market.MarketProfileForm</value>
+		</property>
+		<property name="formView">
+			<value>admin/market/profile</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/admin/market/view.htm?market=</value>
+		</property>
+	</bean>
+	
+	<bean name="/admin/market/stock.htm" class="com.bluetree.web.admin.market.MarketStockController">
+		<property name="marketManager">
+			<ref bean="marketManager" />
+		</property>
+		<property name="stockManager">
+			<ref bean="stockManager" />
+		</property>
+		<property name="sessionForm">
+			<value>true</value>
+		</property>
+		<property name="commandName">
+			<value>marketStockForm</value>
+		</property>
+		<property name="commandClass">
+			<value>com.bluetree.web.admin.market.MarketStockForm</value>
+		</property>
+		<property name="validator">
+			<bean class="com.bluetree.web.admin.market.MarketStockFormValidator" />
+		</property>
+		<property name="formView">
+			<value>admin/market/stock</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/admin/market/view.htm?market=</value>
+		</property>
+	</bean>
+
+</beans>

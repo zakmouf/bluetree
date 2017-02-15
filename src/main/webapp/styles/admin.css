@@ -1,0 +1,39 @@
+* {
+	margin: 0;
+	padding: 0;
+	border: 0px;
+	border-collapse: collapse;
+	font-family: verdana, sans-serif;
+	font-size: 11px;
+}
+
+body {
+	background-color: #fff;
+	text-align: center;
+	color: #000;
+}
+
+a {
+	color: #00c;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+table {
+	margin: 10px;
+}
+
+td,th {
+	padding: 4px;
+}
+
+.error {
+	color: #c00;
+}
+
+input,textarea {
+	border: 1px solid #000;
+}

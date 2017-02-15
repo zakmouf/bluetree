@@ -1,0 +1,46 @@
+body {
+	background-color: #fff;
+	text-align: center;
+}
+
+body,div,a,input,td,th,p,span,select {
+	font-family: tahoma, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+}
+
+form {
+	margin: 0px;
+	padding: 0px;
+}
+
+a {
+	color: #30c;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+input {
+	background: #eee;
+	border: 1px outset #000;
+}
+
+.error {
+	color: #b00;
+}
+
+thead {
+	background-color: #ddd;
+	font-weight: normal;
+}
+
+tr.odd {
+	background-color: #fff
+}
+
+tr.even {
+	background-color: #eee
+}

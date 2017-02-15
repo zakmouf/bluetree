@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd"><!--  - Application context definition for "springapp" DispatcherServlet.  -->
+
+<beans>
+
+	<import resource="adminContext.xml" />
+
+	<bean name="/chart.htm" class="com.bluetree.web.common.ChartController" />
+
+	<bean name="/admin.htm" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName">
+			<value>admin/index</value>
+		</property>
+	</bean>
+
+	<bean name="/login.htm" class="com.bluetree.web.user.controls.LoginController">
+		<property name="userManager">
+			<ref bean="userManager" />
+		</property>
+		<property name="sessionForm">
+			<value>true</value>
+		</property>
+		<property name="commandName">
+			<value>loginForm</value>
+		</property>
+		<property name="commandClass">
+			<value>com.bluetree.web.user.forms.LoginForm</value>
+		</property>
+		<property name="validator">
+			<bean class="com.bluetree.web.user.forms.LoginFormValidator" />
+		</property>
+		<property name="formView">
+			<value>login</value>
+		</property>
+		<property name="successView">
+			<value>home</value>
+		</property>
+	</bean>
+
+	<bean name="/signin.htm" class="com.bluetree.web.user.controls.SigninController">
+		<property name="userManager">
+			<ref bean="userManager" />
+		</property>
+		<property name="profileManager">
+			<ref bean="profileManager" />
+		</property>
+		<property name="sessionForm">
+			<value>true</value>
+		</property>
+		<property name="commandName">
+			<value>signinForm</value>
+		</property>
+		<property name="commandClass">
+			<value>com.bluetree.web.user.forms.SigninForm</value>
+		</property>
+		<property name="validator">
+			<bean class="com.bluetree.web.user.forms.SigninFormValidator" />
+		</property>
+		<property name="formView">
+			<value>signin</value>
+		</property>
+		<property name="successView">
+			<value>home</value>
+		</property>
+	</bean>
+
+	<bean name="/portfolio.htm" class="com.bluetree.web.user.controls.PortfolioController">
+		<property name="userManager">
+			<ref bean="userManager" />
+		</property>
+		<property name="portfolioManager">
+			<ref bean="portfolioManager" />
+		</property>
+		<property name="marketManager">
+			<ref bean="marketManager" />
+		</property>
+		<property name="scheduler">
+			<ref bean="scheduler" />
+		</property>
+		<property name="sessionForm">
+			<value>true</value>
+		</property>
+		<property name="commandName">
+			<value>portfolioForm</value>
+		</property>
+		<property name="commandClass">
+			<value>com.bluetree.web.user.forms.PortfolioForm</value>
+		</property>
+		<property name="validator">
+			<bean class="com.bluetree.web.user.forms.PortfolioFormValidator" />
+		</property>
+		<property name="formView">
+			<value>portfolio</value>
+		</property>
+		<property name="successView">
+			<value>home</value>
+		</property>
+		<property name="loginView">
+			<value>redirect:/login.htm</value>
+		</property>
+	</bean>
+
+	<bean name="/list.htm" class="com.bluetree.web.user.controls.ListController">
+		<property name="viewName">
+			<value>list</value>
+		</property>
+		<property name="loginView">
+			<value>redirect:/login.htm</value>
+		</property>
+		<property name="portfolioManager">
+			<ref bean="portfolioManager" />
+		</property>
+	</bean>
+
+	<bean name="/delete.htm" class="com.bluetree.web.user.controls.DeleteController">
+		<property name="viewName">
+			<value>home</value>
+		</property>
+		<property name="loginView">
+			<value>redirect:/login.htm</value>
+		</property>
+		<property name="portfolioManager">
+			<ref bean="portfolioManager" />
+		</property>
+	</bean>
+
+	<bean name="/view.htm" class="com.bluetree.web.user.controls.ViewController">
+		<property name="viewName">
+			<value>view</value>
+		</property>
+		<property name="loginView">
+			<value>redirect:/login.htm</value>
+		</property>
+		<property name="portfolioManager">
+			<ref bean="portfolioManager" />
+		</property>
+	</bean>
+
+	<bean name="/project.htm" class="com.bluetree.web.user.controls.ProjectController">
+		<property name="viewName">
+			<value>project</value>
+		</property>
+		<property name="loginView">
+			<value>redirect:/login.htm</value>
+		</property>
+		<property name="portfolioManager">
+			<ref bean="portfolioManager" />
+		</property>
+		<property name="projector">
+			<ref bean="projector" />
+		</property>
+	</bean>
+
+	<bean name="/logout.htm" class="com.bluetree.web.user.controls.LogoutController">
+		<property name="viewName">
+			<value>redirect:/login.htm</value>
+		</property>
+	</bean>
+
+	<bean id="urlMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" />
+
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass">
+			<value>org.springframework.web.servlet.view.JstlView</value>
+		</property>
+		<property name="prefix">
+			<value>/jsp/</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>
+
+</beans>

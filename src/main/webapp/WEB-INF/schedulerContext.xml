@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd"><!--  - Application context definition for "springapp" DispatcherServlet.  -->
+
+<beans>
+
+	<bean id="updater" class="com.bluetree.update.impl.YahooUpdater">
+		<property name="stockManager">
+			<ref bean="stockManager" />
+		</property>
+	</bean>
+
+	<bean id="jobFactory" class="com.bluetree.scheduler.JobFactoryBean" />
+
+	<bean id="scheduler" class="com.bluetree.scheduler.SchedulerFactoryBean">
+		<property name="configLocation">
+			<value>classpath:quartz.properties</value>
+		</property>
+		<property name="jobFactory">
+			<ref bean="jobFactory" />
+		</property>
+	</bean>
+
+	<bean id="updateJob" class="com.bluetree.web.admin.update.UpdateJobBean" singleton="false">
+		<property name="marketManager">
+			<ref bean="marketManager" />
+		</property>
+		<property name="updater">
+			<ref bean="updater" />
+		</property>
+	</bean>
+
+	<bean id="optimizeJob" class="com.bluetree.optimization.OptimizeJobBean" singleton="false">
+		<property name="marketManager">
+			<ref bean="marketManager" />
+		</property>
+		<property name="portfolioManager">
+			<ref bean="portfolioManager" />
+		</property>
+		<property name="stockManager">
+			<ref bean="stockManager" />
+		</property>
+	</bean>
+
+	<bean id="projector" class="com.bluetree.project.Projector">
+		<property name="marketManager">
+			<ref bean="marketManager" />
+		</property>
+		<property name="portfolioManager">
+			<ref bean="portfolioManager" />
+		</property>
+		<property name="stockManager">
+			<ref bean="stockManager" />
+		</property>
+	</bean>
+
+</beans>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd"><!--  - Application context definition for "springapp" DispatcherServlet.  -->
+
+<beans>
+
+	<bean name="/admin/user/list.htm" class="com.bluetree.web.admin.user.UserListController">
+		<property name="userManager">
+			<ref bean="userManager" />
+		</property>
+		<property name="viewName">
+			<value>admin/user/list</value>
+		</property>
+	</bean>
+	
+	<bean name="/admin/user/identity.htm" class="com.bluetree.web.admin.user.UserIdentityController">
+		<property name="userManager">
+			<ref bean="userManager" />
+		</property>
+		<property name="viewName">
+			<value>redirect:/login.htm</value>
+		</property>
+	</bean>
+
+	<bean name="/admin/user/view.htm" class="com.bluetree.web.admin.user.UserViewController">
+		<property name="userManager">
+			<ref bean="userManager" />
+		</property>
+		<property name="viewName">
+			<value>admin/user/view</value>
+		</property>
+	</bean>
+
+	<bean name="/admin/user/profile.htm" class="com.bluetree.web.admin.user.UserProfileController">
+		<property name="userManager">
+			<ref bean="userManager" />
+		</property>
+		<property name="profileManager">
+			<ref bean="profileManager" />
+		</property>
+		<property name="sessionForm">
+			<value>true</value>
+		</property>
+		<property name="commandName">
+			<value>userProfileForm</value>
+		</property>
+		<property name="commandClass">
+			<value>com.bluetree.web.admin.user.UserProfileForm</value>
+		</property>
+		<property name="formView">
+			<value>admin/user/profile</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/admin/user/view.htm?user=</value>
+		</property>
+	</bean>
+
+</beans>

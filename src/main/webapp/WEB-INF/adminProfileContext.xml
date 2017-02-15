@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd"><!--  - Application context definition for "springapp" DispatcherServlet.  -->
+
+<beans>
+
+	<bean name="/admin/profile/list.htm" class="com.bluetree.web.admin.profile.ProfileListController">
+		<property name="profileManager">
+			<ref bean="profileManager" />
+		</property>
+		<property name="viewName">
+			<value>admin/profile/list</value>
+		</property>
+	</bean>
+
+	<bean name="/admin/profile/new.htm" class="com.bluetree.web.admin.profile.ProfileNewController">
+		<property name="profileManager">
+			<ref bean="profileManager" />
+		</property>
+		<property name="sessionForm">
+			<value>true</value>
+		</property>
+		<property name="commandName">
+			<value>profileForm</value>
+		</property>
+		<property name="commandClass">
+			<value>com.bluetree.web.admin.profile.ProfileForm</value>
+		</property>
+		<property name="validator">
+			<bean class="com.bluetree.web.admin.profile.ProfileFormValidator" />
+		</property>
+		<property name="formView">
+			<value>admin/profile/new</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/admin/profile/list.htm</value>
+		</property>
+	</bean>
+
+	<bean name="/admin/profile/edit.htm" class="com.bluetree.web.admin.profile.ProfileEditController">
+		<property name="profileManager">
+			<ref bean="profileManager" />
+		</property>
+		<property name="sessionForm">
+			<value>true</value>
+		</property>
+		<property name="commandName">
+			<value>profileForm</value>
+		</property>
+		<property name="commandClass">
+			<value>com.bluetree.web.admin.profile.ProfileForm</value>
+		</property>
+		<property name="validator">
+			<bean class="com.bluetree.web.admin.profile.ProfileFormValidator" />
+		</property>
+		<property name="formView">
+			<value>admin/profile/edit</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/admin/profile/list.htm</value>
+		</property>
+	</bean>
+
+	<bean name="/admin/profile/delete.htm" class="com.bluetree.web.admin.profile.ProfileDeleteController">
+		<property name="profileManager">
+			<ref bean="profileManager" />
+		</property>
+		<property name="viewName">
+			<value>forward:/admin/profile/list.htm</value>
+		</property>
+	</bean>
+
+	<bean name="/admin/profile/default.htm" class="com.bluetree.web.admin.profile.ProfileDefaultController">
+		<property name="profileManager">
+			<ref bean="profileManager" />
+		</property>
+		<property name="viewName">
+			<value>forward:/admin/profile/list.htm</value>
+		</property>
+	</bean>
+
+</beans>

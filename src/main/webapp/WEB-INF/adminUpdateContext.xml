@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd"><!--  - Application context definition for "springapp" DispatcherServlet.  -->
+
+<beans>
+
+	<bean name="/admin/update.htm" class="com.bluetree.web.admin.update.UpdateController">
+		<property name="marketManager">
+			<ref bean="marketManager" />
+		</property>
+		<property name="scheduler">
+			<ref bean="scheduler" />
+		</property>
+		<property name="sessionForm">
+			<value>true</value>
+		</property>
+		<property name="commandName">
+			<value>updateForm</value>
+		</property>
+		<property name="commandClass">
+			<value>com.bluetree.web.admin.update.UpdateForm</value>
+		</property>
+		<property name="validator">
+			<bean class="com.bluetree.web.admin.update.UpdateFormValidator" />
+		</property>
+		<property name="formView">
+			<value>admin/update</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/admin/update.htm</value>
+		</property>
+	</bean>
+
+</beans>

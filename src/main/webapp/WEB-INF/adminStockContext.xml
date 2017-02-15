@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd"><!--  - Application context definition for "springapp" DispatcherServlet.  -->
+
+<beans>
+
+	<bean name="/admin/stock/list.htm" class="com.bluetree.web.admin.stock.StockListController">
+		<property name="stockManager">
+			<ref bean="stockManager" />
+		</property>
+		<property name="viewName">
+			<value>admin/stock/list</value>
+		</property>
+	</bean>
+
+	<bean name="/admin/stock/new.htm" class="com.bluetree.web.admin.stock.StockNewController">
+		<property name="stockManager">
+			<ref bean="stockManager" />
+		</property>
+		<property name="sessionForm">
+			<value>true</value>
+		</property>
+		<property name="commandName">
+			<value>stockForm</value>
+		</property>
+		<property name="commandClass">
+			<value>com.bluetree.web.admin.stock.StockForm</value>
+		</property>
+		<property name="validator">
+			<bean class="com.bluetree.web.admin.stock.StockFormValidator" />
+		</property>
+		<property name="formView">
+			<value>admin/stock/new</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/admin/stock/view.htm?stock=</value>
+		</property>
+	</bean>
+
+	<bean name="/admin/stock/edit.htm" class="com.bluetree.web.admin.stock.StockEditController">
+		<property name="stockManager">
+			<ref bean="stockManager" />
+		</property>
+		<property name="sessionForm">
+			<value>true</value>
+		</property>
+		<property name="commandName">
+			<value>stockForm</value>
+		</property>
+		<property name="commandClass">
+			<value>com.bluetree.web.admin.stock.StockForm</value>
+		</property>
+		<property name="validator">
+			<bean class="com.bluetree.web.admin.stock.StockFormValidator" />
+		</property>
+		<property name="formView">
+			<value>admin/stock/edit</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/admin/stock/view.htm?stock=</value>
+		</property>
+	</bean>
+
+	<bean name="/admin/stock/clear.htm" class="com.bluetree.web.admin.stock.StockClearController">
+		<property name="stockManager">
+			<ref bean="stockManager" />
+		</property>
+		<property name="viewName">
+			<value>forward:/admin/stock/view.htm</value>
+		</property>
+	</bean>
+
+	<bean name="/admin/stock/delete.htm" class="com.bluetree.web.admin.stock.StockDeleteController">
+		<property name="stockManager">
+			<ref bean="stockManager" />
+		</property>
+		<property name="viewName">
+			<value>forward:/admin/stock/list.htm</value>
+		</property>
+	</bean>
+
+	<bean name="/admin/stock/view.htm" class="com.bluetree.web.admin.stock.StockViewController">
+		<property name="stockManager">
+			<ref bean="stockManager" />
+		</property>
+		<property name="sessionForm">
+			<value>true</value>
+		</property>
+		<property name="commandName">
+			<value>stockViewForm</value>
+		</property>
+		<property name="commandClass">
+			<value>com.bluetree.web.admin.stock.StockViewForm</value>
+		</property>
+		<property name="validator">
+			<bean class="com.bluetree.web.admin.stock.StockViewFormValidator" />
+		</property>
+		<property name="formView">
+			<value>admin/stock/view</value>
+		</property>
+	</bean>
+
+	<bean name="/admin/stock/price.htm" class="com.bluetree.web.admin.stock.StockPriceController">
+		<property name="stockManager">
+			<ref bean="stockManager" />
+		</property>
+		<property name="sessionForm">
+			<value>true</value>
+		</property>
+		<property name="commandName">
+			<value>stockPriceForm</value>
+		</property>
+		<property name="commandClass">
+			<value>com.bluetree.web.admin.stock.StockPriceForm</value>
+		</property>
+		<property name="validator">
+			<bean class="com.bluetree.web.admin.stock.StockPriceFormValidator" />
+		</property>
+		<property name="formView">
+			<value>admin/stock/price</value>
+		</property>
+		<property name="successView">
+			<value>redirect:/admin/stock/view.htm?stock=</value>
+		</property>
+	</bean>
+
+</beans>
