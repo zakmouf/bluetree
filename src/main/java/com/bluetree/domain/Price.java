@@ -5,38 +5,38 @@ import java.util.Date;
 
 import com.bluetree.util.MessageUtil;
 
-public class Price implements Serializable, Comparable {
+public class Price implements Serializable, Comparable<Price> {
+
+    private static final long serialVersionUID = 1L;
 
     private Date date;
 
     private Double value;
 
     public Date getDate() {
-        return date;
+	return date;
     }
 
     public void setDate(Date date) {
-        this.date = date;
+	this.date = date;
     }
 
     public Double getValue() {
-        return value;
+	return value;
     }
 
     public void setValue(Double value) {
-        this.value = value;
+	this.value = value;
     }
 
+    @Override
+    public int compareTo(Price other) {
+	return date.compareTo(other.getDate());
+    }
+
+    @Override
     public String toString() {
-        return MessageUtil.msg("[{0},{1}]", date, value);
-    }
-
-    public int compareTo(Object other) {
-        return date.compareTo(((Price) other).getDate());
-    }
-
-    public int hashCode() {
-        return date.hashCode();
+	return MessageUtil.msg("[{0},{1}]", date, value);
     }
 
 }

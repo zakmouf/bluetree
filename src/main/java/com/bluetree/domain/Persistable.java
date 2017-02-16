@@ -4,28 +4,23 @@ import java.io.Serializable;
 
 import com.bluetree.util.MessageUtil;
 
-public class Persistable implements Serializable, Comparable {
+public abstract class Persistable implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private Long id;
 
     public Long getId() {
-        return id;
+	return id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+	this.id = id;
     }
 
+    @Override
     public String toString() {
-        return MessageUtil.msg("persistable[{0}]", id);
-    }
-
-    public int compareTo(Object obj) {
-        return id.compareTo(((Persistable) obj).getId());
-    }
-
-    public int hashCode() {
-        return id.hashCode();
+	return MessageUtil.msg("persistable[{0}]", id);
     }
 
 }

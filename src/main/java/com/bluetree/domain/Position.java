@@ -4,38 +4,42 @@ import java.io.Serializable;
 
 import com.bluetree.util.MessageUtil;
 
-public class Position implements Serializable, Comparable {
+public class Position implements Serializable, Comparable<Position> {
+
+    private static final long serialVersionUID = 1L;
 
     private Stock stock;
 
     private Double weight;
 
     public Stock getStock() {
-        return stock;
+	return stock;
     }
 
     public void setStock(Stock stock) {
-        this.stock = stock;
+	this.stock = stock;
     }
 
     public Double getWeight() {
-        return weight;
+	return weight;
     }
 
     public void setWeight(Double weight) {
-        this.weight = weight;
-    }   
-    
-    public String toString() {
-        return MessageUtil.msg("[{0},{1}]", stock, weight);
+	this.weight = weight;
     }
 
-    public int compareTo(Object other) {
-        int cmp = -weight.compareTo(((Position) other).getWeight());
-        if (cmp == 0) {
-            cmp = stock.compareTo(((Position) other).getStock());
-        }
-        return cmp;
+    @Override
+    public int compareTo(Position other) {
+	int cmp = -weight.compareTo(other.getWeight());
+	if (cmp == 0) {
+	    cmp = stock.compareTo(other.getStock());
+	}
+	return cmp;
+    }
+
+    @Override
+    public String toString() {
+	return MessageUtil.msg("[{0},{1}]", stock, weight);
     }
 
 }

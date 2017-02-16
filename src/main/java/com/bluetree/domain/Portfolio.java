@@ -4,7 +4,9 @@ import java.util.Date;
 
 import com.bluetree.util.MessageUtil;
 
-public class Portfolio extends Persistable {
+public class Portfolio extends Persistable implements Comparable<Portfolio> {
+
+    private static final long serialVersionUID = 1L;
 
     private String name;
 
@@ -21,67 +23,69 @@ public class Portfolio extends Persistable {
     private String error;
 
     public Double getBeta() {
-        return beta;
+	return beta;
     }
 
     public void setBeta(Double beta) {
-        this.beta = beta;
+	this.beta = beta;
     }
 
     public String getError() {
-        return error;
+	return error;
     }
 
     public void setError(String error) {
-        this.error = error;
+	this.error = error;
     }
 
     public Boolean getExecuted() {
-        return executed;
+	return executed;
     }
 
     public void setExecuted(Boolean executed) {
-        this.executed = executed;
+	this.executed = executed;
     }
 
     public Date getFromDate() {
-        return fromDate;
+	return fromDate;
     }
 
     public void setFromDate(Date fromDate) {
-        this.fromDate = fromDate;
+	this.fromDate = fromDate;
     }
 
     public String getName() {
-        return name;
+	return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+	this.name = name;
     }
 
     public Integer getSize() {
-        return size;
+	return size;
     }
 
     public void setSize(Integer size) {
-        this.size = size;
+	this.size = size;
     }
 
     public Date getToDate() {
-        return toDate;
+	return toDate;
     }
 
     public void setToDate(Date toDate) {
-        this.toDate = toDate;
+	this.toDate = toDate;
     }
 
-    public String toString() {
-        return MessageUtil.msg("[{0},{1}]", getId(), name);
+    @Override
+    public int compareTo(Portfolio other) {
+	return -getId().compareTo(other.getId());
     }
-    
-    public int compareTo(Object obj) {
-        return -super.compareTo(obj);
+
+    @Override
+    public String toString() {
+	return MessageUtil.msg("[{0},{1}]", getId(), name);
     }
 
 }

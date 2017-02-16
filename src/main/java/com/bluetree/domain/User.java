@@ -2,7 +2,9 @@ package com.bluetree.domain;
 
 import com.bluetree.util.MessageUtil;
 
-public class User extends Persistable {
+public class User extends Persistable implements Comparable<User> {
+
+    private static final long serialVersionUID = 1L;
 
     private String login;
 
@@ -25,95 +27,93 @@ public class User extends Persistable {
     private String country;
 
     public String getAddress() {
-        return address;
+	return address;
     }
 
     public void setAddress(String address) {
-        this.address = address;
+	this.address = address;
     }
 
     public String getCity() {
-        return city;
+	return city;
     }
 
     public void setCity(String city) {
-        this.city = city;
+	this.city = city;
     }
 
     public String getCompany() {
-        return company;
+	return company;
     }
 
     public void setCompany(String company) {
-        this.company = company;
+	this.company = company;
     }
 
     public String getCountry() {
-        return country;
+	return country;
     }
 
     public void setCountry(String country) {
-        this.country = country;
+	this.country = country;
     }
 
     public String getEmail() {
-        return email;
+	return email;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+	this.email = email;
     }
 
     public String getLogin() {
-        return login;
+	return login;
     }
 
     public void setLogin(String login) {
-        this.login = login;
+	this.login = login;
     }
 
     public String getName() {
-        return name;
+	return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+	this.name = name;
     }
 
     public String getPassword() {
-        return password;
+	return password;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+	this.password = password;
     }
 
     public String getPhone() {
-        return phone;
+	return phone;
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+	this.phone = phone;
     }
 
     public String getZip() {
-        return zip;
+	return zip;
     }
 
     public void setZip(String zip) {
-        this.zip = zip;
+	this.zip = zip;
     }
 
+    @Override
+    public int compareTo(User other) {
+	return login.compareTo(other.getLogin());
+    }
+
+    @Override
     public String toString() {
-        return MessageUtil.msg("[{0},{1}]", getId(), login);
-    }
-
-    public int compareTo(Object obj) {
-        return login.compareTo(((User) obj).getLogin());
-    }
-
-    public int hashCode() {
-        return login.hashCode();
+	return MessageUtil.msg("[{0},{1}]", getId(), login);
     }
 
 }

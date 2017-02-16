@@ -2,38 +2,38 @@ package com.bluetree.domain;
 
 import com.bluetree.util.MessageUtil;
 
-public class Market extends Persistable {
+public class Market extends Persistable implements Comparable<Market> {
+
+    private static final long serialVersionUID = 1L;
 
     private String name;
 
     private Double riskless;
 
     public String getName() {
-        return name;
+	return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+	this.name = name;
     }
 
     public Double getRiskless() {
-        return riskless;
+	return riskless;
     }
 
     public void setRiskless(Double riskless) {
-        this.riskless = riskless;
+	this.riskless = riskless;
     }
 
+    @Override
+    public int compareTo(Market other) {
+	return name.compareTo(other.getName());
+    }
+
+    @Override
     public String toString() {
-        return MessageUtil.msg("[{0},{1},{2}]", getId(), name, riskless);
-    }
-
-    public int compareTo(Object other) {
-        return name.compareTo(((Market) other).getName());
-    }
-
-    public int hashCode() {
-        return name.hashCode();
+	return MessageUtil.msg("[{0},{1},{2}]", getId(), name, riskless);
     }
 
 }
